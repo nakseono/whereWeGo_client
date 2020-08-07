@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
+import axios from "axios";
+
+import Main from "./pages/Main";
+import Login from "./pages/Login";
+import Signup from "./pages/signup";
 
 function App() {
+  const [isLogin, setLogin] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route exact path="/" render={() => <Main />} />
+        <Route path="/login" render={() => <Login isLogin={isLogin} />} />
+        <Route
+          exact
+          path="/signUp"
+          render={() => <Signup isLogin={isLogin} />}
+        />
+      </Switch>
     </div>
   );
 }
