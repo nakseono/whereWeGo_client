@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Link, Route, withRouter, useHistory } from "react-router-dom";
+import { withRouter, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
-export default function Login() {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPw] = useState("");
+  const [username, setName] = useState("");
   const history = useHistory();
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,19 +16,23 @@ export default function Login() {
   const handlePw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPw(e.target.value);
   };
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
 
   return (
     <div>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          return axios
-            .post("http://localhost:4000/signIn", {
+          axios
+            .post("http://localhost:4000/signUp", {
               email: email,
               password: password,
+              username: username,
             })
-            .then(() => {
+            .then((res) => {
               history.push("/");
             })
             .catch((err) => console.log(err));
@@ -43,14 +48,20 @@ export default function Login() {
         <div>
           <input
             type="password"
-            placeholder="비밀번호를 입력 해주세요"
+            placeholder="비밀번호를 입력 해주세요."
             onChange={handlePw}
           ></input>
         </div>
         <div>
-          <Link to="/signUp">아직 아이디가 없다면?</Link>
+          <input
+            placeholder="사용할 닉네임을 입력해주세요."
+            onChange={handleName}
+          ></input>
         </div>
-        <button type="submit">로그인</button>
+        <div>
+          <Link to="/login">이미 아이디가 있으신가요?</Link>
+        </div>
+        <button type="submit">회원가입</button>
       </form>
     </div>
   );
