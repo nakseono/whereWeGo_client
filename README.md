@@ -29,6 +29,7 @@
 
 ## Task
 
+- Dev Branch 밑으로 Feature Branch를 파가며 PR을 날려서 작성. (Dev Branch가 Main Branch임.)
 - 현재 **CRUD까지** 구현 완료된 상태
 - **React에 TypeScript**를 얹어 SPA 구현
 - 서버는 node.js 기반으로 node express 와 <br> sequelize, MySQL을 이용하여 **클라이언트 - 서버 - 데이터베이스** 연결
