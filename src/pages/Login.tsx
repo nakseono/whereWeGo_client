@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Route, withRouter, useHistory } from "react-router-dom";
 import axios from "axios";
+import './css/login.css'
 
 axios.defaults.withCredentials = true;
 
@@ -33,17 +34,19 @@ export default function Login() {
             .catch((err) => console.log(err));
         }}
       >
-        <div>
+        <div >
           <input
             type="email"
             placeholder="이메일을 입력 해주세요."
+            className="loginBox"
             onChange={handleEmail}
           ></input>
         </div>
-        <div>
+        <div >
           <input
             type="password"
             placeholder="비밀번호를 입력 해주세요"
+            className="loginBox"
             onChange={handlePw}
           ></input>
         </div>
