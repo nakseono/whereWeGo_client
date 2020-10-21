@@ -33,7 +33,9 @@
   height: 50px;
   border: hidden;
   border-radius: 4px;
+  font-size: 15px;
 }
+
 .signInBtn {
   background-color: #84bd00;
   margin-top: 40px;
