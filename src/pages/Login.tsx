@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Route, withRouter, useHistory } from "react-router-dom";
 import axios from "axios";
-import './css/login.css'
+import "./css/login.css";
 
 axios.defaults.withCredentials = true;
 
@@ -18,8 +18,8 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
+    <div id="loginBox">
+      <p id="loginTitle">Where We Go ?</p>
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
@@ -34,26 +34,33 @@ export default function Login() {
             .catch((err) => console.log(err));
         }}
       >
-        <div >
+        <div>
           <input
             type="email"
             placeholder="이메일을 입력 해주세요."
-            className="loginBox"
+            className="EmailBox"
             onChange={handleEmail}
           ></input>
         </div>
-        <div >
+        <div>
           <input
             type="password"
-            placeholder="비밀번호를 입력 해주세요"
-            className="loginBox"
+            placeholder="비밀번호를 입력 해주세요."
+            className="PwBox"
             onChange={handlePw}
           ></input>
         </div>
-        <div>
-          <Link to="/signUp">아직 아이디가 없다면?</Link>
+        <button type="submit" className="loginBox signInBtn">
+          로그인
+        </button>
+        <div id="hrLineBox">
+          <hr className="hrLine"></hr>
+          <span id="hrText">또는</span>
+          <hr className="hrLine"></hr>
         </div>
-        <button type="submit">로그인</button>
+        <Link to="/signUp">
+          <button className="loginBox signUpBtn">아직 아이디가 없다면?</button>
+        </Link>
       </form>
     </div>
   );
